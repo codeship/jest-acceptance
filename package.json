@@ -1,0 +1,28 @@
+{
+  "name": "vue-acceptance",
+  "version": "0.0.1",
+  "main": "dist",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "vue",
+    "testing",
+    "acceptance testing",
+    "integration testing",
+    "diff"
+  ],
+  "author": "Jonathan Johnson <me@jondavidjohn.com> (https://jondavidjohn.com/)",
+  "dependencies": {
+    "jest-serializer-vue": "^2.0.2",
+    "snapshot-diff-serializer": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  },
+  "peerDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.20"
+  }
+}
