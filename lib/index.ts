@@ -1,49 +1,49 @@
-import Interactions from './interactions'
 import isPromise from './isPromise'
-
-type InteractionCallback = (ui: Interactions) => any
 
 type Diff = {
   diffA: string
   diffB: string
 } | void
 
-type App = {
+type VueWrapper = {
   html(): string
+  find(selector: Object | string): any
 }
 
-class User {
-  private app: App
+class Tester {
+  private wrapper: VueWrapper
   private priorHtml: string
-  private ui: Interactions
 
-  constructor (app: App) {
-    this.app = app
+  constructor (wrapper: VueWrapper) {
+    this.wrapper = wrapper
     this.priorHtml = ''
-    this.ui = new Interactions(app)
   }
 
   init() {
-    this.priorHtml = this.app.html()
+    this.priorHtml = this.html()
     return this.priorHtml
   }
 
-  act(interaction: InteractionCallback) : Promise<Diff> | Diff {
-    const result = interaction(this.ui)
-
-    if (isPromise(result)) {
-      return result.then(() => this.nextDiff())
-    } else {
-      return this.nextDiff()
-    }
+  next() : Diff {
+    const diffA = this.priorHtml
+    const diffB = this.html()
+    this.priorHtml = this.html()
+    return { diffA, diffB }
   }
 
-  private nextDiff() : Diff {
-    const diffA = this.priorHtml
-    const diffB = this.app.html()
-    this.priorHtml = this.app.html()
-    return { diffA, diffB }
+  fillIn(name: string, value: string) : void {
+    const input = this.wrapper.find(`[name="${name}"]`)
+    input.element.value = value
+    input.trigger('input')
+  }
+
+  click(selector: string | object) : void {
+    this.wrapper.find(selector).trigger('click')
+  }
+
+  private html() : string {
+    return this.wrapper.html()
   }
 }
 
-export default User
+export default Tester
