@@ -1,5 +1,5 @@
 {
-  "name": "vue-acceptance",
+  "name": "jest-acceptance",
   "version": "0.0.1",
   "main": "dist/vue-tester",
   "description": "",
@@ -13,7 +13,8 @@
     "testing",
     "acceptance testing",
     "integration testing",
-    "diff"
+    "diff",
+    "jest"
   ],
   "author": "Jonathan Johnson <me@jondavidjohn.com> (https://jondavidjohn.com/)",
   "dependencies": {
@@ -28,9 +29,6 @@
     "typescript": "^2.9.2",
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0"
-  },
-  "peerDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.20"
   },
   "jest": {
     "moduleFileExtensions": [
