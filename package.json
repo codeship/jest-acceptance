@@ -25,7 +25,9 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "jest": "^23.2.0",
     "ts-jest": "^23.0.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "vue": "^2.5.16",
+    "vue-jest": "^2.6.0"
   },
   "peerDependencies": {
     "@vue/test-utils": "^1.0.0-beta.20"
@@ -34,10 +36,12 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "vue"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      ".*\\.(vue)$": "vue-jest"
     },
     "globals": {
       "ts-jest": {
@@ -47,6 +51,9 @@
     "testMatch": [
       "**/__tests__/*.+(ts|tsx|js)"
     ],
-    "collectCoverageFrom": ["lib/**/*.ts", "!lib/**/*.d.ts"]
+    "collectCoverageFrom": [
+      "lib/**/*.ts",
+      "!lib/**/*.d.ts"
+    ]
   }
 }

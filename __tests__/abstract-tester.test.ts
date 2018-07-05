@@ -1,6 +1,18 @@
 import AbstractTester from '../lib/abstract-tester'
 
+type AppWrapper = {
+  html(): string
+}
+
 class Tester extends AbstractTester {
+  private wrapper: AppWrapper
+
+  constructor (wrapper: AppWrapper) {
+    super()
+    this.wrapper = wrapper
+    this.setPriorHtml(this.nextHtml())
+  }
+
   fillIn(name: string, value: string) : void {
   }
 
