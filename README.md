@@ -1,14 +1,16 @@
-# vue-acceptance
+# jest-acceptance
 
-`vue-accept` is a strategy for getting close to user acceptance quality testing, without the overhead of full on browser automation.
+`jest-acceptance` is a strategy for getting close to user acceptance quality testing, without the overhead of full on browser automation.
 
-This strategy attempts to allow for a minimally mocked approach to ensure the interactions your users are having, produce the expected UI changes.  We do this by combining Jest's [snapshot testing]() ability, with a serialization strategy that allows you to compare the ways your UI change as a result of user interactions surfacing the before/after interaction diff as a snapshot itself.
+This strategy attempts to allow for a minimally mocked approach to ensure the interactions your users are having with your components, produce the expected interface changes.  We do this by combining Jest's [snapshot testing](https://jestjs.io/docs/en/snapshot-testing) ability, with a serialization strategy that allows you to compare the ways your interface change as a result of user interactions by surfacing the before/after interaction diff as a snapshot itself.
+
+Currently targeted at only Vue applications.
 
 ## Usage
 
 ```js
 import { mount } from '@vue/test-utils'
-import User from 'vue-acceptance'
+import Tester from 'jest-acceptance'
 import MyApp from './src/index.vue'
 
 describe('MyApp', () => {
@@ -17,68 +19,26 @@ describe('MyApp', () => {
     const wrapper = mount(MyApp)
 
     // Create a new instance
-    const user = new User(wrapper)
+    const tester = new Tester(wrapper)
 
     // Initialize and test initial HTML output
-    expect(user.init()).toMatchSnapshot()
+    expect(tester.init()).toMatchSnapshot()
 
     // Perform some user interactions, producing/checking diffs along the way.
-    return user
-      .act((ui) => {
-        ui.fillIn('name', 'Jane')
-        ui.click({ ref: 'saveBtn' })
-      })
-      .then((diff) => {
-        // Check this diff
-        expect(diff).toMatchSnapshot()
-      })
-      .then(() => {
-        return user.act((ui) => {
-          ui.click({ ref: 'cancelBtn' })
-        })
-      })
-      .then((diff) => {
-        // Check the next diff
-        expect(diff).toMatchSnapshot()
-      })
-    })
+    tester.fillIn('name', 'Jane')
+    tester.click({ ref: 'saveBtn' })
+    expect(tester.next()).toMatchSnapshot()
+
+    ui.click({ ref: 'cancelBtn' })
+    expect(tester.next()).toMatchSnapshot()
   })
 })
 ```
 
-with async/await
+This would produce three snapshots:
 
-```js
-import { mount } from '@vue/test-utils'
-import User from 'vue-acceptance'
-import MyApp from './src/index.vue'
+1. The initial rendered HTML of the component
+2. The effect the users interactions have on the HTML, in the form of a diff.
+3. The effect the users interactions have on the HTML, in the form of a diff.
 
-describe('MyApp', () => {
-  it('should work', async () => {
-    // Mount a new component wrapper with `@vue/test-utils`
-    const wrapper = mount(MyApp)
-
-    // Create a new instance
-    const user = new User(wrapper)
-
-    // Initialize and test initial HTML output
-    expect(user.init()).toMatchSnapshot()
-
-    // Perform some user interactions, producing/checking diffs along the way.
-    let diff
-
-    diff = await user.act(async (ui) => {
-      ui.fillIn('name', 'Jane')
-      ui.click({ ref: 'saveBtn' })
-    })
-    // Check this diff
-    expect(diff).toMatchSnapshot()
-
-    diff = await user.act(async (ui) => {
-      ui.click({ ref: 'cancelBtn' })
-    })
-    // Check this diff
-    expect(diff).toMatchSnapshot()
-  })
-})
-```
+We find the interaction diffs more useful than full repeated HTML snapshots because many times it is very difficult to spot the key interface changes you expect.  This approach allows you to follow the diffs like a story.
