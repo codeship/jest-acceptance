@@ -10,23 +10,23 @@ export default abstract class AbstractTester {
     this.priorHtml = ''
   }
 
-  setPriorHtml(html: string) : void {
+  setPriorHtml (html: string): void {
     this.priorHtml = html
   }
 
-  current() {
+  current () {
     return this.priorHtml
   }
 
-  next() : Diff {
+  next (): Diff {
     const diffA = this.priorHtml
     const diffB = this.nextHtml()
     this.priorHtml = this.nextHtml()
     return { diffA, diffB }
   }
 
-  abstract fillIn(name: string, value: string): void
-  abstract click(selector: Object | string): void
+  abstract fillIn (name: string, value: string): void
+  abstract click (selector: Object | string): void
 
-  protected abstract nextHtml(): string
+  protected abstract nextHtml (): string
 }

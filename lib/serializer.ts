@@ -1,11 +1,11 @@
 import vue from 'jest-serializer-vue'
 import diff from 'snapshot-diff-serializer'
 
-function test(value: string) : boolean {
+function test (value: string): boolean {
   return vue.test(value) || diff.test(value)
 }
 
-function print(value: string, serializer: any) : string {
+function print (value: string, serializer: any): string {
   let result = ''
 
   if (vue.test(value)) {
