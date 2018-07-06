@@ -20,7 +20,8 @@
   "author": "Jonathan Johnson <me@jondavidjohn.com> (https://jondavidjohn.com/)",
   "dependencies": {
     "jest-serializer-vue": "^2.0.2",
-    "snapshot-diff-serializer": "^1.0.0"
+    "snapshot-diff-serializer": "^1.0.0",
+    "vue-template-compiler": "^2.5.16"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
