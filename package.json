@@ -5,6 +5,7 @@
   "description": "A strategy for getting close to user acceptance quality testing, without the overhead of full browser automation.",
   "license": "MIT",
   "scripts": {
+    "lint": "tslint --project tsconfig.json lib/**/*.ts",
     "test": "jest",
     "build": "tsc",
     "clean": "rm -rf ./dist"
