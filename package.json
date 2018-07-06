@@ -52,6 +52,7 @@
     "collectCoverageFrom": [
       "lib/**/*.ts",
       "!lib/**/*.d.ts"
-    ]
+    ],
+    "snapshotSerializers": ["./lib/serializer.ts"]
   }
 }

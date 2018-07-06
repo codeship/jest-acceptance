@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VueTester #integration produces expected diffs 1`] = `
+<div>
+  <p>Hello World</p>
+  <input name="message" type="text">
+  <button>Click Me!</button>
+</div>
+`;
+
+exports[`VueTester #integration produces expected diffs 2`] = `
+- Diff A
++ Diff B
+
+  <div>
+-   <p>Hello World</p>
++   <p>Hello Universe!</p>
+    <input name="message" type="text">
+    <button>Click Me!</button>
+  </div>
+`;
