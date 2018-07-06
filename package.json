@@ -2,7 +2,8 @@
   "name": "jest-acceptance",
   "version": "0.0.1",
   "main": "dist/vue-tester",
-  "description": "",
+  "description": "A strategy for getting close to user acceptance quality testing, without the overhead of full browser automation.",
+  "license": "MIT",
   "scripts": {
     "test": "jest",
     "build": "tsc",
