@@ -11,7 +11,7 @@ const TestComponent = Vue.extend({
     </div>
   `,
 
-  data() {
+  data () {
     return {
       inputValue: '',
       message: 'Hello World'
@@ -19,7 +19,7 @@ const TestComponent = Vue.extend({
   },
 
   methods: {
-    buttonClick() {
+    buttonClick () {
       this.message = this.inputValue
     }
   }

@@ -1,7 +1,7 @@
 import AbstractTester from '../lib/abstract-tester'
 
 type AppWrapper = {
-  html(): string
+  html (): string
 }
 
 class Tester extends AbstractTester {
@@ -13,13 +13,13 @@ class Tester extends AbstractTester {
     this.setPriorHtml(this.nextHtml())
   }
 
-  fillIn(name: string, value: string) : void {
-  }
+  /* tslint:disable-next-line:no-empty */
+  fillIn (name: string, value: string): void { }
 
-  click(selector: Object | string) : void {
-  }
+  /* tslint:disable-next-line:no-empty */
+  click (selector: Object | string): void { }
 
-  nextHtml() : string {
+  nextHtml (): string {
     return this.wrapper.html()
   }
 }
