@@ -22,18 +22,18 @@
   "dependencies": {
     "jest-serializer-vue": "^2.0.2",
     "snapshot-diff-serializer": "^1.0.0",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
-    "@vue/test-utils": "^1.0.0-beta.20",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "jest": "^23.2.0",
     "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "tslint-config-standard": "^7.1.0",
     "typescript": "^2.9.2",
-    "vue": "^2.5.16",
-    "vue-jest": "^2.6.0"
+    "vue": "^2.6.10",
+    "vue-jest": "^3.0.4"
   },
   "jest": {
     "moduleFileExtensions": [
