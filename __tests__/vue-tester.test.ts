@@ -8,6 +8,9 @@ const TestComponent = Vue.extend({
       <p>{{ message }}</p>
       <input name="message" type="text" v-model="inputValue"/>
       <button @click="buttonClick">Click Me!</button>
+      <ul class="list">
+        <li class="old-message">Hello Test <button @click="buttonClick">Remove</button></button></li>
+      </ul>
     </div>
   `,
 
@@ -45,6 +48,18 @@ describe('VueTester', () => {
       const tester = new VueTester(wrapper)
 
       tester.click('button')
+      expect(buttonClick).toHaveBeenCalled()
+    })
+
+    it('allows for deep selectors', () => {
+      const buttonClick = jest.fn()
+      const wrapper = mount(TestComponent, {
+        methods: { buttonClick }
+      })
+
+      const tester = new VueTester(wrapper)
+
+      tester.click('.list .old-message button')
       expect(buttonClick).toHaveBeenCalled()
     })
   })

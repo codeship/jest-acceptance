@@ -5,6 +5,11 @@ exports[`VueTester #integration produces expected diffs 1`] = `
   <p>Hello World</p>
   <input name="message" type="text">
   <button>Click Me!</button>
+  <ul class="list">
+    <li class="old-message">Hello Test
+      <button>Remove</button>
+    </li>
+  </ul>
 </div>
 `;
 
@@ -12,10 +17,13 @@ exports[`VueTester #integration produces expected diffs 2`] = `
 - Diff A
 + Diff B
 
+@@ -1,7 +1,7 @@
   <div>
 -   <p>Hello World</p>
 +   <p>Hello Universe!</p>
     <input name="message" type="text">
     <button>Click Me!</button>
-  </div>
+    <ul class="list">
+      <li class="old-message">Hello Test
+        <button>Remove</button>
 `;
