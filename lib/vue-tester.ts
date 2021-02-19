@@ -1,8 +1,11 @@
 import AbstractTester from './abstract-tester'
 
-type VueWrapper = {
+interface VueWrapper {
   html (): string
   find (selector: object | string): any
+  vm: {
+    $nextTick (): Promise<void>
+  }
 }
 
 export default class VueTester extends AbstractTester {
@@ -11,7 +14,7 @@ export default class VueTester extends AbstractTester {
   constructor (wrapper: VueWrapper) {
     super()
     this.wrapper = wrapper
-    this.setPriorHtml(this.nextHtml())
+    this.setPriorHtml(wrapper.html())
   }
 
   fillIn (name: string, value: string): void {
@@ -24,7 +27,9 @@ export default class VueTester extends AbstractTester {
     this.wrapper.find(selector).trigger('click')
   }
 
-  protected nextHtml (): string {
+  protected async nextHtml (): Promise<string> {
+    await this.wrapper.vm.$nextTick()
+
     return this.wrapper.html()
   }
 }

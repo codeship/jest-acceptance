@@ -6,15 +6,15 @@ function test (value: string): boolean {
 }
 
 function print (value: string, serializer: any): string {
-  let result = ''
-
   if (vue.test(value)) {
-    result = vue.print.apply(null, arguments)
+    return vue.print.apply(null, [value, serializer])
   } else if (diff.test(value)) {
-    result = diff.print.apply(null, arguments)
+    return diff.print.apply(null, [value, serializer])
   }
-
-  return result
+  return ''
 }
 
-export { test, print }
+export {
+  test,
+  print
+}

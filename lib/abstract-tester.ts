@@ -18,15 +18,20 @@ export default abstract class AbstractTester {
     return this.priorHtml
   }
 
-  next (): Diff {
+  async next (): Promise<Diff> {
     const diffA = this.priorHtml
-    const diffB = this.nextHtml()
-    this.priorHtml = this.nextHtml()
-    return { diffA, diffB }
+    const diffB = await this.nextHtml()
+
+    this.priorHtml = await this.nextHtml()
+
+    return {
+      diffA,
+      diffB
+    }
   }
 
   abstract fillIn (name: string, value: string): void
   abstract click (selector: Object | string): void
 
-  protected abstract nextHtml (): string
+  protected abstract nextHtml (): Promise<string>
 }

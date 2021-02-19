@@ -38,10 +38,12 @@ describe('VueTester', () => {
 
   describe('#click', () => {
     it('it triggers a click on the selected element', () => {
-      const buttonClick = jest.fn()
-      const wrapper = mount(TestComponent, {
-        methods: { buttonClick }
-      })
+      const wrapper = mount(TestComponent)
+      const buttonClick = jest.spyOn(wrapper.vm, 'buttonClick')
+
+      // deprecated
+      wrapper.setMethods({ buttonClick })
+
       const tester = new VueTester(wrapper)
 
       tester.click('button')
@@ -50,7 +52,7 @@ describe('VueTester', () => {
   })
 
   describe('#integration', () => {
-    it('produces expected diffs', () => {
+    it('produces expected diffs', async () => {
       const wrapper = mount(TestComponent)
       const tester = new VueTester(wrapper)
 
@@ -58,7 +60,7 @@ describe('VueTester', () => {
 
       tester.fillIn('message', 'Hello Universe!')
       tester.click('button')
-      expect(tester.next()).toMatchSnapshot()
+      expect(await tester.next()).toMatchSnapshot()
     })
   })
 })
