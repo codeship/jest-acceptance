@@ -2,7 +2,9 @@ import AbstractTester from './abstract-tester'
 
 interface VueWrapper {
   html (): string
-  find (selector: object | string): any
+  // Find is deprecated
+  find (selector: string | object): any
+  findComponent (selector: string | object): any
   vm: {
     $nextTick (): Promise<void>
   }
@@ -24,12 +26,18 @@ export default class VueTester extends AbstractTester {
   }
 
   click (selector: string | object): void {
-    this.wrapper.find(selector).trigger('click')
+    const findMethod = typeof selector === 'string' ? 'find' : 'findComponent'
+
+    this.wrapper[findMethod](selector).trigger('click')
   }
 
   protected async nextHtml (): Promise<string> {
     await this.wrapper.vm.$nextTick()
 
+    return this.wrapper.html()
+  }
+
+  protected nextHtmlSync (): string {
     return this.wrapper.html()
   }
 }

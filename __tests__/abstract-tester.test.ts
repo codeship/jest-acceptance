@@ -22,6 +22,10 @@ class Tester extends AbstractTester {
   async nextHtml (): Promise<string> {
     return this.wrapper.html()
   }
+
+  nextHtmlSync (): string {
+    return this.wrapper.html()
+  }
 }
 
 describe('AbstractTester', () => {
