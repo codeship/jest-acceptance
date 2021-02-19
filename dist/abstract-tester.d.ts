@@ -7,9 +7,9 @@ export default abstract class AbstractTester {
     constructor();
     setPriorHtml(html: string): void;
     current(): string;
-    next(): Diff;
+    next(): Promise<Diff>;
     abstract fillIn(name: string, value: string): void;
     abstract click(selector: Object | string): void;
-    protected abstract nextHtml(): string;
+    protected abstract nextHtml(): Promise<string>;
 }
 export {};
