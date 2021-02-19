@@ -67,7 +67,8 @@ var VueTester = /** @class */ (function (_super) {
         input.trigger('input');
     };
     VueTester.prototype.click = function (selector) {
-        this.wrapper.find(selector).trigger('click');
+        var findMethod = typeof selector === 'string' ? 'find' : 'findComponent';
+        this.wrapper[findMethod](selector).trigger('click');
     };
     VueTester.prototype.nextHtml = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -80,6 +81,9 @@ var VueTester = /** @class */ (function (_super) {
                 }
             });
         });
+    };
+    VueTester.prototype.nextHtmlSync = function () {
+        return this.wrapper.html();
     };
     return VueTester;
 }(abstract_tester_1.default));

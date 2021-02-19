@@ -46,6 +46,15 @@ var AbstractTester = /** @class */ (function () {
     AbstractTester.prototype.current = function () {
         return this.priorHtml;
     };
+    AbstractTester.prototype.nextSync = function () {
+        var diffA = this.priorHtml;
+        var diffB = this.nextHtmlSync();
+        this.priorHtml = this.nextHtmlSync();
+        return {
+            diffA: diffA,
+            diffB: diffB
+        };
+    };
     AbstractTester.prototype.next = function () {
         return __awaiter(this, void 0, void 0, function () {
             var diffA, diffB, _a;

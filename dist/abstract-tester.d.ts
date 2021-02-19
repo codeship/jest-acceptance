@@ -1,4 +1,4 @@
-declare type Diff = {
+declare type IDiff = {
     diffA: string;
     diffB: string;
 } | void;
@@ -7,9 +7,11 @@ export default abstract class AbstractTester {
     constructor();
     setPriorHtml(html: string): void;
     current(): string;
-    next(): Promise<Diff>;
+    nextSync(): IDiff;
+    next(): Promise<IDiff>;
     abstract fillIn(name: string, value: string): void;
     abstract click(selector: Object | string): void;
     protected abstract nextHtml(): Promise<string>;
+    protected abstract nextHtmlSync(): string;
 }
 export {};
