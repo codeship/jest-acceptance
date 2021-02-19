@@ -22,7 +22,7 @@ describe('MyApp', () => {
     const tester = new Tester(wrapper)
 
     // Initialize and test initial HTML output
-    expect(tester.init()).toMatchSnapshot()
+    expect(tester.current()).toMatchSnapshot()
 
     // Perform some user interactions, producing/checking diffs along the way.
     tester.fillIn('name', 'Jane')
