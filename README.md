@@ -14,7 +14,7 @@ import Tester from 'jest-acceptance'
 import MyApp from './src/index.vue'
 
 describe('MyApp', () => {
-  it('should work', () => {
+  it('should work', async () => {
     // Mount a new component wrapper with `@vue/test-utils`
     const wrapper = mount(MyApp)
 
@@ -27,10 +27,10 @@ describe('MyApp', () => {
     // Perform some user interactions, producing/checking diffs along the way.
     tester.fillIn('name', 'Jane')
     tester.click({ ref: 'saveBtn' })
-    expect(tester.next()).toMatchSnapshot()
+    expect(await tester.next()).toMatchSnapshot()
 
     ui.click({ ref: 'cancelBtn' })
-    expect(tester.next()).toMatchSnapshot()
+    expect(await tester.next()).toMatchSnapshot()
   })
 })
 ```
