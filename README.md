@@ -6,6 +6,11 @@ This strategy attempts to allow for a minimally mocked approach to ensure the in
 
 Currently targeted at only Vue applications.
 
+## Methods
+- `next`: returns a promise. Awaits Vue's `$nextTick` under the hood.
+- `nextSync`: returns the next dom state without awaiting `$nextTick`.
+- `current`: returns the current dom state.
+
 ## Usage
 
 ```js
