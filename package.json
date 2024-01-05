@@ -44,13 +44,8 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(ts|tsx)$": ["ts-jest", { "tsconfig": "tsconfig.json" }],
       ".*\\.(vue)$": "@vue/vue2-jest"
-    },
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.json"
-      }
     },
     "testMatch": [
       "**/__tests__/*.+(ts|tsx|js)"
