@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import Vue from 'vue'
 import VueTester from '../lib/vue-tester'
 import { mount } from '@vue/test-utils'
