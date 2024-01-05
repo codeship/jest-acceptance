@@ -1,4 +1,4 @@
-declare type IDiff = {
+type IDiff = {
     diffA: string;
     diffB: string;
 } | void;
