@@ -2,7 +2,7 @@
 
 `jest-acceptance` is a strategy for getting close to user acceptance quality testing, without the overhead of browser automation.
 
-This strategy attempts to allow for a minimally mocked approach to ensure the interactions your users are having with your components, produce the expected interface changes.  We do this by combining Jest's [snapshot testing](https://jestjs.io/docs/en/snapshot-testing) ability, with a serialization strategy that allows you to compare the ways your interface change as a result of user interactions by surfacing the before/after interaction diff as a snapshot itself.
+This strategy attempts to allow for a minimally mocked approach to ensure the interactions your users are having with your components, produce the expected interface changes.  We do this by combining Jest's [snapshot testing](https://jestjs.io/docs/snapshot-testing) ability, with a serialization strategy that allows you to compare the ways your interface change as a result of user interactions by surfacing the before/after interaction diff as a snapshot itself.
 
 Currently targeted at only Vue applications.
 
@@ -42,7 +42,7 @@ describe('MyApp', () => {
 
 This would produce three snapshots:
 
-1. The initial rendered HTML of the component
+1. The initial rendered HTML of the component.
 2. The effect the users interactions have on the HTML, in the form of a diff.
 3. The effect the users interactions have on the HTML, in the form of a diff.
 
