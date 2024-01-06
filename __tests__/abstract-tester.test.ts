@@ -13,10 +13,8 @@ class Tester extends AbstractTester {
     this.setPriorHtml(wrapper.html())
   }
 
-  /* tslint:disable-next-line:no-empty */
   fillIn (name: string, value: string): void { }
 
-  /* tslint:disable-next-line:no-empty */
   click (selector: Object | string): void { }
 
   async nextHtml (): Promise<string> {
