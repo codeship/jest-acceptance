@@ -1,6 +1,6 @@
 {
   "name": "@cloudbees/jest-acceptance",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "main": "dist/vue-tester",
   "description": "A strategy for getting close to user acceptance quality testing, without the overhead of full browser automation.",
   "license": "MIT",
